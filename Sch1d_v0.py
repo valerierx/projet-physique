@@ -2,6 +2,15 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import argparse
+
+from numba.scripts.generate_lower_listing import description
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-r', '--realiste',
+                    action='store_true', help="Utilise un potentiel plus réaliste")
+args = parser.parse_args()
+
 
 # Variable 
 dt = 1e-7
@@ -22,7 +31,10 @@ k = math.sqrt(2 * abs(E)) #Nombre d'onde
 def init_simulation():
     o = np.linspace(0, (nx - 1) * dx, nx) #Vecteur des positions x de taille nx
     V = np.zeros(nx)
-    V[(o >= 0.8) & (o <= 0.9)] = v0 # potentiel = V0 si x appartenant à [0.8,0.9 ] | ici on peu utiliser un potentiel dit plus réaliste : V = v0 * np.exp(-((o - 0.85)**2) / (2 * 0.02**2))
+    if args.realiste:
+        V = v0 * np.exp(-((o - 0.85) ** 2) / (2 * 0.02 ** 2)) # ici on utilise un potentiel dit plus réaliste
+    else:
+        V[(o >= 0.8) & (o <= 0.9)] = v0 # potentiel = V0 si x appartenant à [0.8, 0.9]
 
     
     cpt = A * np.exp(1j * k * o - ((o - xc) ** 2) / (2 * sigma ** 2)) #Equation d'onde 
