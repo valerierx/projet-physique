@@ -22,7 +22,7 @@ plt.figure(figsize=(10, 6))
 for n in range(3):
     psi_n = vectp_onde[:, n]
     psi_n /= np.sqrt(np.sum(psi_n**2) * dx)  # Normalisation
-    plt.plot(x, psi_n + vp_Energie[n], label=f"n={n}, E={vp_Energie[n]:.1f}") # affichage des fonction avec des décalage pour ne pas les superposé
+    plt.plot(x, psi_n**2 + vp_Energie[n], label=f"n={n}, E={vp_Energie[n]:.1f}") # affichage des fonction avec des décalage pour ne pas les superposé
 
 
 #affichage   
