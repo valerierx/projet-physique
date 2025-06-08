@@ -27,7 +27,7 @@ for n in range(3):
 
 #affichage   
 plt.plot(x, V, 'k--', label='Potentiel V(x)')
-plt.title("États stationnaires dans un puits de potentiel finit")
+plt.title("États stationnaires dans un puits de potentiel fini")
 plt.xlabel("x")
 plt.ylabel("ψₙ(x) + énergie")
 plt.legend()
