@@ -24,8 +24,8 @@ sigma = 0.05 #largeur du paquet (décrit sa dispersion spatiale)
 A = 1 / (math.sqrt(sigma * math.sqrt(math.pi))) # Constante de normalisation
 v0 = -4000 # puit
 h_bar= 1.054571817e-34 # Constante de planck de réduite 
-e = (1/2)*(pow((np.pi*h_bar)/0.1, 2)*v0) #Niveau d'énergie trouver analytiquement pour n = 1
-E = e * v0 - v0 #energie cinétique 
+e = (1/2)*(pow((np.pi*h_bar)/0.1, 2)) #Niveau d'énergie trouver analytiquement pour n = 1
+E = e - v0 #energie cinétique 
 k = math.sqrt(2 * abs(E)) #Nombre d'onde
 
 #  Initialisation des tableaux
